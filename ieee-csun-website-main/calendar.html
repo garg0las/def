@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendar | IEEE CSUN</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script type="text/javascript" src="js" defer></script>
+</head>
+
+<body id="cuerpo">
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo logo-only" href="index.html">
+  <img src="assets/img/brand/ieee-csun-logo.png" alt="IEEE CSUN">
+</a>
+<button class="nav-theme" id="classChangeButton" data-theme-toggle="" aria-pressed="false" type="button">
+        Dark mode
+      </button>
+
+      <nav class="nav-links">
+        <a href="about.html">About</a>
+        <a href="events.html">Events</a>
+        <a href="calendar.html" aria-current="page">Calendar</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="join.html">Get started</a>
+    </div>
+  </header>
+
+  <main class="calendar-page">
+    <!-- Header -->
+    <section class="calendar-hero">
+      <div class="container calendar-hero-inner">
+        <h1 class="calendar-title">IEEE CSUN Calendar</h1>
+        <p class="calendar-subtitle">
+          All events, workshops, project nights, and important dates.
+        </p>
+      </div>
+    </section>
+
+    <!-- Calendar -->
+    <section class="calendar-section">
+      <div class="container">
+        <div class="calendar-card">
+          <iframe
+            title="IEEE CSUN Google Calendar"
+            src="https://calendar.google.com/calendar/embed?wkst=1&ctz=America%2FLos_Angeles&showPrint=0&showTitle=0&showTabs=0&showCalendars=0&src=YW9sYW55LmFjb3N0YS4wMTVAbXkuY3N1bi5lZHU&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%2300629B&color=%2300629B"
+            frameborder="0"
+            scrolling="no"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <!-- Optional helper -->
+        <div class="calendar-actions">
+          <a
+            class="btn secondary"
+            href="https://calendar.google.com/calendar/u/0/r?cid=YW9sYW55LmFjb3N0YS4wMTVAbXkuY3N1bi5lZHU"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open in Google Calendar
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Go to top -->
+  <button class="to-top" aria-label="Back to top">↑</button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
