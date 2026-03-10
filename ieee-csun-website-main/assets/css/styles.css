@@ -227,6 +227,11 @@ img{ max-width:100%; display:block; }
   background: rgba(255,255,255,.06);
   border-color: rgba(255,255,255,.16);
 }
+.btn.tertiary{
+    color: var(--text);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.16);
+}
 .btn:hover{ transform: translateY(-1px); }
 
 .arrow{
