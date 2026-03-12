@@ -50,8 +50,7 @@
           <div class="events-hero-actions">
             <a class="btn primary" href="calendar.html">View Calendar <span class="arrow">→</span></a>
             <a class="btn secondary" href="join.html">Join IEEE CSUN</a>
-            <a class="btn tertiary" href="https://docs.google.com/spreadsheets/d/1pMOj6cjlLQkrcOgbs-JdpY_ftaEPMe-c5Y9X75nMVck/edit?usp=sharing"target="_blank" rel="noreferrer">Open Spreadsheet calendar</a>
-          </div>
+           </div>
 
           <div class="events-stats">
             <div class="stat-tile">
@@ -200,10 +199,15 @@
             </div>
             <div class="up-info">
               <div class="up-top">
-                <h3 class="up-title">General Meeting</h3>
+                <div data-sheetdb-url="https://sheetdb.io/api/v1/yvwv1sjgxffo8">
+                  <p>{{Event name}}</p>
+                </div>
                 <span class="chip">EVENT</span>
               </div>
-              <p class="up-desc">Introduce the semester plan, officer updates, and how to join committees.</p>
+              <div data-sheetdb-url="https://sheetdb.io/api/v1/yvwv1sjgxffo8">
+    <p>{{Event desc}}</p>
+</div>
+
               <div class="up-meta">
                 <span> Jacaranda 2201</span>
                 <span> Time TBA</span>
@@ -245,8 +249,9 @@
                 <h3 class="up-title">Project Night: Starter Builds</h3>
                 <span class="chip">PROJECT</span>
               </div>
-              <p class="up-desc">Join a team and pick a build track (software, embedded, or cybersecurity).</p>
-              <div class="up-meta">
+                <div data-sheetdb-url="https://sheetdb.io/api/v1/yvwv1sjgxffo8">
+                  <p>{{Event desc 2}}</p>
+                </div>              <div class="up-meta">
                 <span> Jacaranda 2201</span>
                 <span> Teams formed on-site</span>
               </div>
@@ -301,9 +306,9 @@
       </div>
     </section>
   </main>
-
   <button class="to-top" aria-label="Back to top">↑</button>
   <script src="assets/js/main.js"></script>
+  <script src="https://sheetdb.io/handlebars.js"></script>
 </body>
 </html>
 
