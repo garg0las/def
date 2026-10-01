@@ -1,0 +1,61 @@
+name: Newsletter archive
+
+# Pulls sent issues from EmailOctopus and commits them as assets/data/newsletter.json.
+# The site reads that file directly, so no API key is ever exposed to the browser.
+# Committing to main is what publishes it: Pages serves this repo from main at /.
+
+on:
+  schedule:
+    # 13:00 UTC daily (06:00 PT). Newsletters do not need faster than this.
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+
+# Stop a manual run and the nightly run from committing over each other.
+concurrency:
+  group: newsletter-archive
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  # A push made with GITHUB_TOKEN does not start a Pages build, so the job
+  # requests one itself after committing.
+  pages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build archive JSON
+        env:
+          EMAILOCTOPUS_API_KEY: ${{ secrets.EMAILOCTOPUS_API_KEY }}
+        run: node scripts/build-newsletter-archive.mjs
+
+      - name: Commit when the archive changed
+        id: commit
+        run: |
+          if git diff --quiet -- assets/data/newsletter.json; then
+            echo "No archive change. Nothing to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/newsletter.json
+          git commit -m "Update newsletter archive"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Request a Pages build
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"
